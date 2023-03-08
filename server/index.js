@@ -18,6 +18,7 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 
+//mandar dados para o db
 app.post("/register", (req, res) => {
 	const name = req.body.name;
 	const cost = req.body.cost;
@@ -37,17 +38,21 @@ app.post("/register", (req, res) => {
 	});
 });
 
-// app.get("/", (req, res) => {
-// 	const query =
-// 		"INSERT INTO games (name, cost, category) VALUES ('Far Cry', '111', 'Ação')";
+app.get("/getCards", (req, res) => {
+	const query = "SELECT * FROM games";
 
-// 	db.query(query, (req, res), (error) => {
-//         if(error) {
-//             console.log(error)
-//         }
-//     });
-// 	app.render("../client/index.html");
-// });
+	db.query(query, (error, result) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		if (result) {
+			res.send(result);
+			console.log("getCards mandados!");
+		}
+	});
+});
 
 app.listen(port, () => {
 	console.log("app rodando na porta 4000...");
