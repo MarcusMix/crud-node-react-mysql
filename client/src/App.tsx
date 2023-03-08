@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import axios from 'axios'
+import axios from "axios";
 
 //components
 import Card from "./components/card/card.component";
@@ -65,7 +65,15 @@ function App() {
 			</div>
 			{listGames?.map((game: ICard) => {
 				return (
-					<Card key={game.id}>
+					<Card
+						id={game.id}
+						key={game.id}
+						category={game.category}
+						cost={game.cost}
+						name={game.name}
+						listCards={game.listCards}
+						setListGames={game.setListGames}
+					>
 						<h1>{game.name}</h1>
 						<p>{game.cost}</p>
 						<p>{game.category}</p>
