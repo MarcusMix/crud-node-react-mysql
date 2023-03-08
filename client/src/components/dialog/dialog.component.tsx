@@ -11,6 +11,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 //interface
 import IForm from "../../interface/IForm";
 
+//axios
+import axios from "axios";
+
 const FormDialog = (props: IForm) => {
 	const [editValues, setEditValues] = React.useState({
 		id: props.id,
@@ -18,6 +21,17 @@ const FormDialog = (props: IForm) => {
 		category: props.category,
 		cost: props.cost,
 	});
+
+	const handleEditGames = () => {
+		axios.put("http://localhost:4000/edit", {
+			id: editValues.id,
+			name: editValues.name,
+			category: editValues.category,
+			cost: editValues.cost,
+		});
+
+		handleClose();
+	};
 
 	const handleClose = () => {
 		props.setOpen!(false);
@@ -71,7 +85,7 @@ const FormDialog = (props: IForm) => {
 			<DialogActions>
 				<Button onClick={handleClose}>Cancelar</Button>
 				<Button onClick={handleClose}>Excluir</Button>
-				<Button onClick={handleClose}>Salvar</Button>
+				<Button onClick={handleEditGames}>Salvar</Button>
 			</DialogActions>
 		</Dialog>
 	);
