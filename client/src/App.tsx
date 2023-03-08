@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import axios from "axios";
+import axios from 'axios'
 
 //components
 import Card from "./components/card/card.component";
 
+//interface
+import ICard from "./interface/ICard";
+
 function App() {
 	const [values, setValues] = useState<any>();
-	const [listGames, setListGames] = useState<any>();
+	const [listGames, setListGames] = useState<ICard>();
 
 	const handleChangeValues = (value: any) => {
 		setValues((prevValue: any) => ({
@@ -60,8 +63,14 @@ function App() {
 				/>
 				<button onClick={handleClickButton}>Cadastrar</button>
 			</div>
-			{listGames?.map((game: any) => {
-				return <Card/>
+			{listGames?.map((game: ICard) => {
+				return (
+					<Card key={game.id}>
+						<h1>{game.name}</h1>
+						<p>{game.cost}</p>
+						<p>{game.category}</p>
+					</Card>
+				);
 			})}
 		</>
 	);
