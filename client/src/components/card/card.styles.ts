@@ -7,6 +7,7 @@ export const CardStyled = styled.div`
     flex-direction: column;
     border: 1px solid black;
     margin: 1rem 20%;
+    cursor: pointer;
 
     & h1 {
         font-size: 3.5rem;
