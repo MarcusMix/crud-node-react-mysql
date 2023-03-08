@@ -18,6 +18,27 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 
+//editar cards
+app.put("/edit", (req, res) => {
+	const id = req.body.id;
+	const name = req.body.name;
+	const cost = req.body.cost;
+	const category = req.body.category;
+
+	const query = `UPDATE games SET name = '${name}', cost = '${cost}', category = '${category}'  WHERE id = ${id}`;
+
+	db.query(query, (error, result) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		if (result) {
+			console.log("Card atualizado!");
+		}
+	});
+});
+
 //mandar dados para o db
 app.post("/register", (req, res) => {
 	const name = req.body.name;
@@ -38,6 +59,7 @@ app.post("/register", (req, res) => {
 	});
 });
 
+//pegando cards
 app.get("/getCards", (req, res) => {
 	const query = "SELECT * FROM games";
 
