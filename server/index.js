@@ -18,6 +18,23 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 
+//deletar cards
+app.delete("/delete/:id", (req, res) => {
+	const { id } = req.params;
+	const query = `DELETE FROM games WHERE id = ${id}`;
+
+	db.query(query, (error, result) => {
+		if (error) {
+			console.log(error);
+			return;
+		}
+
+		if (result) {
+			console.log("Card deletado!");
+		}
+	});
+});
+
 //editar cards
 app.put("/edit", (req, res) => {
 	const id = req.body.id;
@@ -54,7 +71,7 @@ app.post("/register", (req, res) => {
 		}
 
 		if (result) {
-			console.log("Dados mandados!");
+			console.log("Card inserido!");
 		}
 	});
 });
@@ -71,11 +88,11 @@ app.get("/getCards", (req, res) => {
 
 		if (result) {
 			res.send(result);
-			console.log("getCards mandados!");
+			console.log("Cards resgatados!");
 		}
 	});
 });
 
 app.listen(port, () => {
-	console.log("app rodando na porta 4000...");
+	console.log("App rodando na porta 4000...");
 });
