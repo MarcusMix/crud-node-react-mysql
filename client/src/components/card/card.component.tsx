@@ -1,5 +1,18 @@
-const Card = () => {
-    return <h1>card</h1>
-}
+//react
+import { FC } from "react";
 
-export default Card
+//interface
+import ICard from "../../interface/ICard";
+
+//styles
+import { CardStyled } from "./card.styles";
+
+const Card: FC<ICard> = ({ category, cost, name, children }) => {
+	return (
+         <CardStyled>
+            {children}
+         </CardStyled>
+    )
+};
+
+export default Card;
