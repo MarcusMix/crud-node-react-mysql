@@ -44,6 +44,11 @@ const FormDialog = (props: IForm) => {
 		}));
 	};
 
+	const handleDeleteGames = () => {
+		axios.delete(`http://localhost:4000/delete/${editValues.id}`);
+		handleClose();
+	};
+
 	return (
 		<Dialog open={props.open!} onClose={handleClose}>
 			<DialogTitle>Editar</DialogTitle>
@@ -84,7 +89,7 @@ const FormDialog = (props: IForm) => {
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={handleClose}>Cancelar</Button>
-				<Button onClick={handleClose}>Excluir</Button>
+				<Button onClick={handleDeleteGames}>Excluir</Button>
 				<Button onClick={handleEditGames}>Salvar</Button>
 			</DialogActions>
 		</Dialog>
