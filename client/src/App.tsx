@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 
+//components
+import Card from "./components/card/card.component";
+
 function App() {
 	const [values, setValues] = useState<any>();
+	const [listGames, setListGames] = useState<any>();
 
 	const handleChangeValues = (value: any) => {
 		setValues((prevValue: any) => ({
@@ -20,6 +24,18 @@ function App() {
 		});
 	};
 
+	useEffect(() => {
+		const fetchCards = async () => {
+			const cards = await axios.get(
+				"http://localhost:4000/getCards"
+			);
+			setListGames(cards.data);
+		};
+
+		fetchCards();
+	}, []);
+
+	console.log(listGames);
 	return (
 		<>
 			<h1>Shop</h1>
@@ -44,6 +60,9 @@ function App() {
 				/>
 				<button onClick={handleClickButton}>Cadastrar</button>
 			</div>
+			{listGames?.map((game: any) => {
+				return <Card/>
+			})}
 		</>
 	);
 }
