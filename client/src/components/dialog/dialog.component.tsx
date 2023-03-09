@@ -14,6 +14,9 @@ import IForm from "../../interface/IForm";
 //axios
 import axios from "axios";
 
+//toaster notification
+import toast from "react-hot-toast";
+
 const FormDialog = (props: IForm) => {
 	const [editValues, setEditValues] = React.useState({
 		id: props.id,
@@ -27,6 +30,9 @@ const FormDialog = (props: IForm) => {
 	};
 
 	const handleEditGames = () => {
+		toast("Jogo deletado com sucesso!", {
+			icon: "✍",
+		});
 		axios.put("http://localhost:4000/edit", {
 			id: editValues.id,
 			name: editValues.name,
@@ -50,6 +56,9 @@ const FormDialog = (props: IForm) => {
 	};
 
 	const handleDeleteGames = () => {
+		toast("Jogo deletado com sucesso!", {
+			icon: "❌",
+		});
 		axios.delete(`http://localhost:4000/delete/${editValues.id}`);
 		handleClose();
 		refreshPage();
