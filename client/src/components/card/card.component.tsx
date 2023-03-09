@@ -10,8 +10,10 @@ import { CardStyled } from "./card.styles";
 //components
 import FormDialog from "../dialog/dialog.component";
 
+//icons
+import { BiCategoryAlt, BiCoin } from "react-icons/bi";
+
 const Card: FC<ICard> = ({
-	children,
 	name,
 	category,
 	cost,
@@ -37,7 +39,18 @@ const Card: FC<ICard> = ({
 				setListGames={setListGames}
 				id={id}
 			/>
-			<CardStyled onClick={handleClickCard}>{children}</CardStyled>
+			<CardStyled onClick={handleClickCard}>
+				<h1>{name}</h1>
+				<p>
+					<BiCoin />
+					R$
+					{cost}
+				</p>
+				<p>
+					<BiCategoryAlt />
+					{category}
+				</p>
+			</CardStyled>
 		</>
 	);
 };
