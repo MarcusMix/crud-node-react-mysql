@@ -22,6 +22,10 @@ const FormDialog = (props: IForm) => {
 		cost: props.cost,
 	});
 
+	const refreshPage = () => {
+		document.location.reload();
+	};
+
 	const handleEditGames = () => {
 		axios.put("http://localhost:4000/edit", {
 			id: editValues.id,
@@ -31,6 +35,7 @@ const FormDialog = (props: IForm) => {
 		});
 
 		handleClose();
+		refreshPage();
 	};
 
 	const handleClose = () => {
@@ -47,6 +52,7 @@ const FormDialog = (props: IForm) => {
 	const handleDeleteGames = () => {
 		axios.delete(`http://localhost:4000/delete/${editValues.id}`);
 		handleClose();
+		refreshPage();
 	};
 
 	return (

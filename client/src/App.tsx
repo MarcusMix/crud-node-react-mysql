@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+
+//axios
 import axios from "axios";
 
 //components
@@ -12,6 +14,10 @@ function App() {
 	const [values, setValues] = useState<any>();
 	const [listGames, setListGames] = useState<ICard>();
 
+	const refreshPage = () => {
+		document.location.reload();
+	};
+
 	const handleChangeValues = (value: any) => {
 		setValues((prevValue: any) => ({
 			...prevValue,
@@ -20,6 +26,7 @@ function App() {
 	};
 
 	const handleClickButton = async () => {
+		refreshPage();
 		await axios.post("http://localhost:4000/register", {
 			name: values.name,
 			cost: values.cost,
@@ -38,7 +45,6 @@ function App() {
 		fetchCards();
 	}, []);
 
-	console.log(listGames);
 	return (
 		<>
 			<h1>Shop</h1>
