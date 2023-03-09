@@ -17,7 +17,7 @@ import { CreateCard, Wrapper } from "./home.styles";
 import toast, { Toaster } from "react-hot-toast";
 
 function Home() {
-	const [values, setValues] = useState<any>();
+	const [values, setValues] = useState<ICard>();
 	const [listGames, setListGames] = useState<ICard>();
 
 	const refreshPage = () => {
@@ -37,9 +37,9 @@ function Home() {
 		});
 		refreshPage();
 		await axios.post("http://localhost:4000/register", {
-			name: values.name,
-			cost: values.cost,
-			category: values.category,
+			name: values?.name,
+			cost: values?.cost,
+			category: values?.category,
 		});
 	};
 
