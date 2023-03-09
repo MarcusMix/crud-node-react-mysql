@@ -12,6 +12,7 @@ import FormDialog from "../dialog/dialog.component";
 
 //icons
 import { BiCategoryAlt, BiCoin } from "react-icons/bi";
+import { Toaster } from "react-hot-toast";
 
 const Card: FC<ICard> = ({
 	name,
@@ -40,6 +41,7 @@ const Card: FC<ICard> = ({
 				id={id}
 			/>
 			<CardStyled onClick={handleClickCard}>
+				<Toaster />
 				<h1>{name}</h1>
 				<p>
 					<BiCoin />
