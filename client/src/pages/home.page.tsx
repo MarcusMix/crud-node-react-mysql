@@ -16,6 +16,9 @@ import { BiCategoryAlt, BiCoin } from "react-icons/bi";
 //styles
 import { CreateCard, Wrapper } from "./home.styles";
 
+//toaster notification
+import toast, { Toaster } from "react-hot-toast";
+
 function Home() {
 	const [values, setValues] = useState<any>();
 	const [listGames, setListGames] = useState<ICard>();
@@ -32,6 +35,9 @@ function Home() {
 	};
 
 	const handleClickButton = async () => {
+		toast('Jogo adicionado com sucesso!', {
+			icon: '✅',
+		  });
 		refreshPage();
 		await axios.post("http://localhost:4000/register", {
 			name: values.name,
@@ -86,7 +92,7 @@ function Home() {
 						listCards={game.listCards}
 						setListGames={game.setListGames}
 					>
-						
+						<Toaster/>
 						<h1>{game.name}</h1>
 						<p>
 							<BiCoin />
