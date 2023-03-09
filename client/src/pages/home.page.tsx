@@ -10,9 +10,6 @@ import Card from "../components/card/card.component";
 //interface
 import ICard from "../interface/ICard";
 
-//icons
-import { BiCategoryAlt, BiCoin } from "react-icons/bi";
-
 //styles
 import { CreateCard, Wrapper } from "./home.styles";
 
@@ -35,9 +32,9 @@ function Home() {
 	};
 
 	const handleClickButton = async () => {
-		toast('Jogo adicionado com sucesso!', {
-			icon: '✅',
-		  });
+		toast("Jogo adicionado com sucesso!", {
+			icon: "✅",
+		});
 		refreshPage();
 		await axios.post("http://localhost:4000/register", {
 			name: values.name,
@@ -92,17 +89,7 @@ function Home() {
 						listCards={game.listCards}
 						setListGames={game.setListGames}
 					>
-						<Toaster/>
-						<h1>{game.name}</h1>
-						<p>
-							<BiCoin />
-							R$ 
-							{game.cost}
-						</p>
-						<p>
-							<BiCategoryAlt />
-							{game.category}
-						</p>
+						<Toaster />
 					</Card>
 				);
 			})}
