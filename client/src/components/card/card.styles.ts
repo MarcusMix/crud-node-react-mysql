@@ -5,16 +5,25 @@ export const CardStyled = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid black;
+    border: 4px solid black;
     margin: 1rem 20%;
     cursor: pointer;
-
-    & h1 {
-        font-size: 3.5rem;
+    border-radius: 0.7rem;
+    min-width: 650px;
+    
+    :hover {
+        border: 4px solid #FF4858;
+        transition: 250ms ease-in-out;
     }
 
+    & h1 {
+        font-size: 2.5rem;
+        color: #8b8a8b;
+    }
+    
     & p {
         font-size: 2rem;
         padding: 1rem;
+        color: #8b8a8b;
     }
 `
