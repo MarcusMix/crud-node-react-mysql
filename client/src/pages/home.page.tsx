@@ -59,18 +59,21 @@ function Home() {
 			<h1>Cadastro de Jogos</h1>
 			<CreateCard>
 				<input
+					autoComplete="off"
 					type="text"
 					name="name"
 					placeholder="Nome do jogo..."
 					onChange={handleChangeValues}
 				/>
 				<input
+					autoComplete="off"
 					type="text"
 					name="cost"
 					placeholder="Valor...  "
 					onChange={handleChangeValues}
 				/>
 				<input
+					autoComplete="off"
 					type="text"
 					name="category"
 					placeholder="Categoria..."
@@ -88,9 +91,7 @@ function Home() {
 						name={game.name}
 						listCards={game.listCards}
 						setListGames={game.setListGames}
-					>
-						<Toaster />
-					</Card>
+					></Card>
 				);
 			})}
 		</Wrapper>
