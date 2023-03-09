@@ -24,6 +24,8 @@ export const Wrapper = styled.div`
 		background-color: #32cd32;
 		border: 4px #32cd32 solid;
 		transition: 250ms ease-in-out;
+		font-size: 16px;
+		margin-top: 5px;
 	}
 
 	& button:hover {
