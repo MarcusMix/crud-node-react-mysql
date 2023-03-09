@@ -16,6 +16,7 @@ import axios from "axios";
 
 //toaster notification
 import toast from "react-hot-toast";
+import { ButtonCancel, ButtonDelete, ButtonStyled, Wrapper } from "./dialog.styles";
 
 const FormDialog = (props: IForm) => {
 	const [editValues, setEditValues] = React.useState({
@@ -65,49 +66,69 @@ const FormDialog = (props: IForm) => {
 	};
 
 	return (
-		<Dialog open={props.open!} onClose={handleClose}>
-			<DialogTitle>Editar</DialogTitle>
-			<DialogContent>
-				<TextField
-					autoFocus
-					margin="dense"
-					id="name"
-					label="Nome do jogo"
-					defaultValue={props.name}
-					onChange={handleChangeValues}
-					type="text"
-					fullWidth
-					variant="standard"
-				/>
-				<TextField
-					autoFocus
-					margin="dense"
-					id="cost"
-					label="Preço"
-					defaultValue={props.cost}
-					onChange={handleChangeValues}
-					type="text"
-					fullWidth
-					variant="standard"
-				/>
-				<TextField
-					autoFocus
-					margin="dense"
-					id="category"
-					label="Categoria do jogo"
-					defaultValue={props.category}
-					onChange={handleChangeValues}
-					type="text"
-					fullWidth
-					variant="standard"
-				/>
-			</DialogContent>
-			<DialogActions>
-				<Button onClick={handleClose}>Cancelar</Button>
-				<Button onClick={handleDeleteGames}>Excluir</Button>
-				<Button onClick={handleEditGames}>Salvar</Button>
-			</DialogActions>
-		</Dialog>
+		<Wrapper>
+			<Dialog open={props.open!} onClose={handleClose}>
+				<DialogTitle fontFamily={"Poppins"}>Editar</DialogTitle>
+				<DialogContent>
+					<TextField
+						autoFocus
+						margin="dense"
+						id="name"
+						label="Nome do jogo"
+						defaultValue={props.name}
+						onChange={handleChangeValues}
+						type="text"
+						fullWidth
+						variant="standard"
+						color="secondary"
+					/>
+					<TextField
+						autoFocus
+						margin="dense"
+						id="cost"
+						label="Preço"
+						defaultValue={props.cost}
+						onChange={handleChangeValues}
+						type="text"
+						fullWidth
+						color="secondary"
+						variant="standard"
+					/>
+					<TextField
+						autoFocus
+						margin="dense"
+						id="category"
+						label="Categoria do jogo"
+						defaultValue={props.category}
+						onChange={handleChangeValues}
+						type="text"
+						fullWidth
+						variant="standard"
+						color="secondary"
+					/>
+				</DialogContent>
+				<DialogActions>
+					<ButtonCancel
+						color="secondary"
+						onClick={handleClose}
+					>
+						Cancelar
+					</ButtonCancel>
+					<ButtonDelete
+						color="secondary"
+						onClick={handleDeleteGames}
+					>
+						Excluir
+					</ButtonDelete>
+					<ButtonStyled
+						color="secondary"
+						onClick={handleEditGames}
+					>
+						Salvar
+					</ButtonStyled>
+				</DialogActions>
+			</Dialog>
+		</Wrapper>
 	);
 };
 
