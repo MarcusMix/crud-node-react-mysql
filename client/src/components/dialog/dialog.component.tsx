@@ -30,7 +30,7 @@ const FormDialog = (props: IForm) => {
 	};
 
 	const handleEditGames = () => {
-		toast("Jogo deletado com sucesso!", {
+		toast("Jogo editado com sucesso!", {
 			icon: "✍",
 		});
 		axios.put("http://localhost:4000/edit", {
