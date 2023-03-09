@@ -1,16 +1,22 @@
+//hooks
 import { useEffect, useState } from "react";
-import "./App.css";
 
 //axios
 import axios from "axios";
 
 //components
-import Card from "./components/card/card.component";
+import Card from "../components/card/card.component";
 
 //interface
-import ICard from "./interface/ICard";
+import ICard from "../interface/ICard";
 
-function App() {
+//icons
+import { BiCategoryAlt, BiCoin } from "react-icons/bi";
+
+//styles
+import { CreateCard, Wrapper } from "./home.styles";
+
+function Home() {
 	const [values, setValues] = useState<any>();
 	const [listGames, setListGames] = useState<ICard>();
 
@@ -46,19 +52,19 @@ function App() {
 	}, []);
 
 	return (
-		<>
-			<h1>Shop</h1>
-			<div className="card">
+		<Wrapper>
+			<h1>Cadastro de Jogos</h1>
+			<CreateCard>
 				<input
 					type="text"
 					name="name"
-					placeholder="Nome...  "
+					placeholder="Nome do jogo..."
 					onChange={handleChangeValues}
 				/>
 				<input
 					type="text"
 					name="cost"
-					placeholder="Preço...  "
+					placeholder="Valor...  "
 					onChange={handleChangeValues}
 				/>
 				<input
@@ -68,7 +74,7 @@ function App() {
 					onChange={handleChangeValues}
 				/>
 				<button onClick={handleClickButton}>Cadastrar</button>
-			</div>
+			</CreateCard>
 			{listGames?.map((game: ICard) => {
 				return (
 					<Card
@@ -80,14 +86,22 @@ function App() {
 						listCards={game.listCards}
 						setListGames={game.setListGames}
 					>
+						
 						<h1>{game.name}</h1>
-						<p>{game.cost}</p>
-						<p>{game.category}</p>
+						<p>
+							<BiCoin />
+							R$ 
+							{game.cost}
+						</p>
+						<p>
+							<BiCategoryAlt />
+							{game.category}
+						</p>
 					</Card>
 				);
 			})}
-		</>
+		</Wrapper>
 	);
 }
 
-export default App;
+export default Home;
